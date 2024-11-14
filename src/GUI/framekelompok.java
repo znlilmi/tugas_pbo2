@@ -179,23 +179,26 @@ private dbCRUD con;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String[] field = {"id_kelompok", "nama_kelompok", "kel/desa", "tahun_bentuk","jumlah_anggota","luas_lahan","ketua_kelompok"};
-        String[] value = {
-            jTextField5.getText(),
-            jTextField6.getText(),
-            jTextField7.getText(),
-            jTextField8.getText(),
-            jTextField9.getText(),
-            jTextField10.getText(),
-            jTextField11.getText()
+        // Mengambil nilai dari JTextField di form
+    String id_kelompok = jTextField5.getText();
+    String nama_kelompok = jTextField6.getText();
+    String desa = jTextField7.getText();
+    String tahun_bentuk = jTextField8.getText();
+    String jumlah_anggota = jTextField9.getText();
+    String luas_lahan = jTextField10.getText();
+    String ketua_kelompok = jTextField11.getText();
 
-        };
-        if (!con.duplicateKey("nama_kelompok", "id_kelompok", value[0])) {
-            con.SimpanDinamis("kelompok_tani", field, value);
-            JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
-        } else {
-            JOptionPane.showMessageDialog(null, "nip sudah ada", "Error", JOptionPane.ERROR_MESSAGE);
-        }        // TODO add your handling code here:
+    // Pastikan semua data sudah diisi
+    if (id_kelompok.isEmpty() || nama_kelompok.isEmpty() || desa.isEmpty() || 
+        tahun_bentuk.isEmpty() || jumlah_anggota.isEmpty() || luas_lahan.isEmpty() || 
+        ketua_kelompok.isEmpty()) {
+        
+        JOptionPane.showMessageDialog(null, "Semua field harus diisi", "Error", JOptionPane.ERROR_MESSAGE);
+    } else {
+        // Panggil metode SimpanDinamisKelompok untuk menyimpan data
+        con.SimpanDinamisKelompok(id_kelompok, nama_kelompok, desa, tahun_bentuk, jumlah_anggota, luas_lahan, ketua_kelompok);
+        JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
+    }       // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

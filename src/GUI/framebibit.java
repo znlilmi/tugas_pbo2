@@ -163,21 +163,17 @@ public class framebibit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String[] field = {"id_bibit", "nama_bibit", "jenis_bibit","jumlah","tanggal"};
-        String[] value = {
-            jTextField1.getText(),
-            jTextField2.getText(),
-            jTextField3.getText(),
-            jTextField4.getText(),
-            jTextField5.getText()
+        String[] nama_bibit = {jTextField2.getText()};
+        String[] jenis_bibit = {jTextField3.getText()};
+        int[] jumlah = {Integer.parseInt(jTextField4.getText())}; // Pastikan jTextField4 berisi angka
+        String[] tanggal = {jTextField5.getText()}; // Pastikan jTextField5 berisi tanggal dalam format yang benar
 
-        };
-        if (!con.duplicateKey("nama_bibit", "id_bibit", value[0])) {
-            con.SimpanDinamis("bibit", field, value);
+        if (!con.duplicateKey("bibit", "id_bibit", jTextField1.getText())) {
+            con.SimpanDinamisBibit(jTextField1.getText(), nama_bibit, jenis_bibit, jumlah, tanggal);
             JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
         } else {
             JOptionPane.showMessageDialog(null, "id_bibit sudah ada", "Error", JOptionPane.ERROR_MESSAGE);
-        }        // TODO add your handling code here:
+        }      // TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
